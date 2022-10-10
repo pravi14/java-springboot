@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                echo 'Build'
+            }
+        }
+             stage('test') {
+            steps {
+                echo 'test'
+            }
+        }
+             stage('sonarqube') {
+            steps {
+                echo 'sonarqube'
+            }
+        }
+             stage('push to artifactory') {
+            steps {
+                echo 'push to artifactory'
+            }
+        }
+             stage('deploy to QA') {
+            steps {
+                echo 'deploy to QA'
+            }
+        } 
+             stage('deploy to prod') {
+            steps {
+                echo 'deploy to prod'
+            }
+            
+        }
+    post {
+        failure {
+            echo 'failure'
+        }
+        success{
+            echo 'success'
+        }
+        always{
+            echo 'always'
+        }
+        aborted{
+            echo 'aborted'
+        }
+
+    }
+}
