@@ -1,50 +1,29 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
-            steps {
-                echo 'Build'
-            }
-        }
         stage('test') {
             steps {
-                echo 'test'
+                sh 'mvn teest'
             }
         }
-        stage('sonarqube') {
+        stage('package') {
             steps {
-                echo 'sonarqube'
+                sh 'mvn clean package  -Dmaven.test.skip=true'
             }
         }
-        stage('push to artifactory') {
+        stage('deploy war') {
             steps {
-                echo 'push to artifactory'
+                echo 'deploy'
             }
-        }
-        stage('deploy to QA') {
-            steps {
-                echo 'deploy to QA'
-            }
-        } 
-        stage('deploy to prod') {
-            steps {
-                echo 'deploy to prod'
-            }   
         }
     }
     post {
         failure {
-            echo 'failure'
+            echo 'build failure'
         }
         success{
-            echo 'success'
+            echo 'build success'
         }
-        always{
-            echo 'always'
-        }
-        aborted{
-            echo 'aborted'
-        }   
-     }
+    }
 }
 
