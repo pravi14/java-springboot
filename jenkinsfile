@@ -32,6 +32,7 @@ pipeline {
             }
             
         }
+    }
     post {
         failure {
             echo 'failure'
@@ -48,3 +49,4 @@ pipeline {
 
     }
 }
+
