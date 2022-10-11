@@ -6,32 +6,32 @@ pipeline {
                 echo 'Build'
             }
         }
-             stage('test') {
+        stage('test') {
             steps {
                 echo 'test'
             }
         }
-             stage('sonarqube') {
+        stage('sonarqube') {
             steps {
                 echo 'sonarqube'
             }
         }
-             stage('push to artifactory') {
+        stage('push to artifactory') {
             steps {
                 echo 'push to artifactory'
             }
         }
-             stage('deploy to QA') {
+        stage('deploy to QA') {
             steps {
                 echo 'deploy to QA'
             }
         } 
-             stage('deploy to prod') {
+        stage('deploy to prod') {
             steps {
                 echo 'deploy to prod'
-            }
-            
+            }  
         }
+    }
     post {
         failure {
             echo 'failure'
@@ -41,10 +41,6 @@ pipeline {
         }
         always{
             echo 'always'
-        }
-        aborted{
-            echo 'aborted'
-        }
-
+        }    
     }
 }
